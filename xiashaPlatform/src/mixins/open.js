@@ -18,10 +18,8 @@ export default{
 			// debugger
 			var that=this;
 			that.loading=true;
-			// that.$refs[addfrom].validate((valid) => {
-				
-					// if (valid) {
-						// debugger
+			that.$refs[addfrom].validate((valid) => {				
+					if (valid) {
 						var versionParam={
 							version:that.$store.state.version
 						};
@@ -38,15 +36,14 @@ export default{
 							that.$Message.error(res.message)
 						}
 					})							
-// 					} else {
-// 						debugger
-// 						that.loading=false;
-// 							setTimeout(()=>{
-// 							that.loading=true;
-// 						},1000)
-// 						
-// 					}
-			// })
+					} else {
+						that.loading=false;
+							setTimeout(()=>{
+							that.loading=true;
+						},10)
+						
+					}
+			})
 		},
 		//È¡Ïû
 		asyncCancel(){

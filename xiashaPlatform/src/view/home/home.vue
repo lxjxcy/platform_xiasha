@@ -12,9 +12,8 @@
 				 @on-change="onChangeDate"
 				 :value="selectdate">
 				 </DatePicker>
-				 
 				 <Select v-model="version"
-				 style="width:150px" 
+				 style="width:100px" 
 				 :label-in-value="true" 
 				 @on-change="changeVersion">
 				 <Option v-for="item in list"  :value="item.version" :key="item.id">

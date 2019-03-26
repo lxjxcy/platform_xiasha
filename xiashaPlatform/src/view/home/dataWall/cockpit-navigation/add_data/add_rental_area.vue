@@ -4,6 +4,7 @@
 			v-model="addModal"
 			title="新增"
 			width="450"
+			:loading="loading"
 			@on-cancel="asyncCancel"
 			@on-ok="asyncOK"
 			:mask-closable="false">
@@ -40,7 +41,7 @@
 			return{
 				ruleValidate:{
 					month: [
-							{ required: true, message: '请输入', trigger: 'blur' }
+							{ required: true, message: '请输入', trigger: 'change' }
 					],
 					
 					num: [

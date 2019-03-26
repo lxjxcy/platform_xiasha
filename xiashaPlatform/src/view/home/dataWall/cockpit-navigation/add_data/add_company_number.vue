@@ -4,6 +4,7 @@
 			v-model="addModal"
 			title="新增"
 			width="450"
+			:loading="loading"
 			@on-cancel="asyncCancel"
 			@on-ok="asyncOK"
 			:mask-closable="false">
@@ -43,7 +44,7 @@
 					],
 					
 					value: [
-						{ required: true, message: '请输入', trigger: 'blur' },
+						{ required: true, message: '请输入', trigger: 'change' },
 					],
 					
 				},

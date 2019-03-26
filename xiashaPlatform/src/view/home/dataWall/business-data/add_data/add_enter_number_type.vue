@@ -4,6 +4,7 @@
 			v-model="addModal"
 			title="新增"
 			width="450"
+			:loading="loading"
 			@on-cancel="asyncCancel"
 			@on-ok="asyncOK"
 			:mask-closable="false">

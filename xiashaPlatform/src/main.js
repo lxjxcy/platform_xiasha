@@ -32,6 +32,9 @@ Vue.component(tableMonth.name, tableMonth)
 
 Vue.prototype.axios = axios
  router.beforeEach((to, from, next) => {
+	  if (to.meta.title) {
+        document.title = to.meta.title
+    }
 	 let token = store.state.token;
     if (to.matched.some(record => record.meta.Auth)) { // 判断该路由是否需要登录权限,能检测出带参数的路由
         if (token) {  // 通过vuex state获取当前的token是否存在

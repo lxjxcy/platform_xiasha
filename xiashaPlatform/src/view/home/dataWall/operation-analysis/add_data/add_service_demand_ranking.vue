@@ -4,13 +4,14 @@
 			v-model="addModal"
 			title="新增"
 			width="450"
+			:loading="loading"
 			@on-cancel="asyncCancel"
 			@on-ok="asyncOK"
 			:mask-closable="false">
 			<div>	
 				<Form ref="addfrom" :model="addfrom" :rules="ruleValidate" :label-width="80">
 					
-					<FormItem label="园区">
+					<FormItem label="园区" prop="communityName">
 						<div v-model="addfrom.communityName" style="width:300px;height:33px;border: 1px solid #dbdee2;border-radius: 5px;padding-left:5px;">{{addfrom.communityName}}</div>
 					</FormItem>
 					<FormItem label="服务名称" prop="name">
@@ -23,10 +24,7 @@
 					</FormItem> -->
 					<FormItem label="关注人数" prop="num">
 						<Input  v-model="addfrom.num" style="width:300px" placeholder=""></Input>
-					</FormItem>
-					 <!-- <FormItem label="角色" prop="roleId">
-					</FormItem> -->
-					
+					</FormItem>					
 				</Form>
 			</div>
 		</Modal>
@@ -43,6 +41,9 @@
 			return{
 				list:[],
 				ruleValidate:{
+					communityName:[
+							{ required: true, message: '请输入', }
+					],
 					month: [
 							{ required: true, message: '请输入', trigger: 'blur' }
 					],

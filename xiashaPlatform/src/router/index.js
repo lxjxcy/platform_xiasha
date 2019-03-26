@@ -63,7 +63,8 @@ import policy_demand_ranking from "@/view/home/dataWall/operation-analysis/polic
 //服务需求排行
 import service_demand_ranking from "@/view/home/dataWall/operation-analysis/service_demand_ranking.vue"
 
-
+//项目列表
+import communityList from "@/view/home/dataWall/communityList.vue"
 //版本生成
 import createVersion from "@/view/home/version/createVersion.vue"
 
@@ -92,11 +93,12 @@ export default new Router({
 			name: 'home',
 			redirect: '/cockpit-navigation/month_rental_income',
 			component: home,
-			// meta: {Auth: true},
+			
 			children:[
 				{
 					path: '/cockpit-navigation/month_rental_income',
 					name: 'month_rental_income',
+					meta: {title: '月度租金收入'},
 					component: month_rental_income,
 				},
 				{
@@ -229,6 +231,11 @@ export default new Router({
 					path: '/createVersion',
 					name: 'createVersion',
 					component: createVersion,
+				},
+				{
+					path: '/communityList',
+					name: 'communityList',
+					component: communityList,
 				},
 			]
 		},

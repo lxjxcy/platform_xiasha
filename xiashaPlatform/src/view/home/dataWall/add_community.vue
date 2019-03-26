@@ -10,14 +10,8 @@
 			:mask-closable="false">
 			<div>	
 				<Form ref="addfrom" :model="addfrom" :rules="ruleValidate" :label-width="100">					
-					<FormItem label="企业名称" prop="companyName">
-						<Input  v-model="addfrom.companyName" style="width:300px" placeholder=""></Input>
-					</FormItem>
-					<FormItem label="进驻项目" prop="communityName">
+					<FormItem label="园区名称" prop="communityName">
 						<Input  v-model="addfrom.communityName" style="width:300px" placeholder=""></Input>
-					</FormItem>
-					<FormItem label="面积" prop="area">
-						<Input  v-model="addfrom.area" style="width:300px" placeholder=""></Input>
 					</FormItem>	
 				</Form>
 			</div>
@@ -25,32 +19,20 @@
 	</div>
 </template>
 <script>
-	import openData from "../../../../../mixins/open.js"
+	import openData from "../../../mixins/open.js"
 	export default {
-		name:"add_user",
+		name:"add_community",
 		data(){
 			return{
 				ruleValidate:{
-			
 					communityName: [
 							{ required: true, message: '请输入', trigger: 'blur' },
 					],
-					
-					companyName: [
-						{ required: true, message: '请输入', trigger: 'blur' },
-					],
-					area: [
-						{ required: true, message: '请输入', trigger: 'blur' },
-					],
-					
 				},
-				
 				addfrom:{
-					companyName:"",	
 					communityName:"",
 					month:this.$store.state.month,
 					year:this.$store.state.year,
-					area:'',
 					number:'',
 				}
 			}

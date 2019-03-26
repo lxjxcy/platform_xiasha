@@ -4,19 +4,21 @@
 			v-model="addModal"
 			title="新增"
 			width="450"
+			:loading="loading"
 			@on-cancel="asyncCancel"
 			@on-ok="asyncOK"
 			:mask-closable="false">
 			<div>	
 				<Form ref="addfrom" :model="addfrom" :rules="ruleValidate" :label-width="80">
+					<FormItem label="园区" prop="communityName">
+						<div v-model="addfrom.communityName" style="width:300px;height:33px;border: 1px solid #dbdee2;border-radius: 5px;padding-left:5px;">{{addfrom.communityName}}</div>
+					</FormItem>
 					<FormItem label="月份" prop="month">
 						<Select v-model="addfrom.month" @on-change="seleMonth" placeholder="请选择" style="width:300px" :label-in-value="true">
 								<Option v-for="item in this.$store.state.monthList"  :value="item.month" :key="item.month">{{ item.monthName }}月</Option>
 						</Select>
 					</FormItem>
-					<FormItem label="园区">
-						<div v-model="addfrom.communityName" style="width:300px;height:33px;border: 1px solid #dbdee2;border-radius: 5px;padding-left:5px;">{{addfrom.communityName}}</div>
-					</FormItem>
+					
 					<FormItem label="租金收入" prop="num">
 						<Input  v-model="addfrom.num"  style="width:300px" placeholder=""></Input>
 					</FormItem>
@@ -42,8 +44,11 @@
 		data(){
 			return{
 				ruleValidate:{
+					communityName:[
+							{ required: true, message: '请输入', }
+					],
 					month: [
-							{ required: true, message: '请输入', trigger: 'blur' }
+							{ required: true, message: '请输入', trigger: 'change' }
 					],
 					
 					num: [

@@ -3,6 +3,7 @@
 		<Modal
 			v-model="addModal"
 			title="新增"
+			:loading="loading"
 			width="450"
 			@on-cancel="asyncCancel"
 			@on-ok="asyncOK"

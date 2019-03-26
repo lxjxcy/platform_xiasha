@@ -4,6 +4,7 @@
 			v-model="addModal"
 			title="新增"
 			width="450"
+			:loading="loading"
 			@on-cancel="asyncCancel"
 			@on-ok="asyncOK"
 			:mask-closable="false">
@@ -18,12 +19,12 @@
 						</Select>
 					</FormItem>
 					
-					<FormItem label="类型" prop="value" v-if="list.length!=1">
-						<Select v-model="value" @on-change="seleType" placeholder="请选择" style="width:300px" :label-in-value="true">
+					
+					<FormItem label="类型" prop="clientType" v-if="list.length!=1">
+						<Select v-model="addfrom.clientType" @on-change="seleType" placeholder="请选择" style="width:300px" :label-in-value="true">
 								<Option v-for="item in list" :label="item.label" :value="item.label" :key="item.label">{{ item.label }}</Option>
 						</Select>
 					</FormItem>
-
 					<FormItem label="客户数量" prop="num">
 						<Input  v-model="addfrom.num" style="width:300px" placeholder=""></Input>
 					</FormItem>
@@ -45,7 +46,7 @@
 			return{
 				ruleValidate:{
 					month: [
-							{ required: true, message: '请输入', trigger: 'blur' }
+							{ required: true, message: '请输入', trigger: 'change' }
 					],
 					
 					num: [
@@ -54,8 +55,8 @@
 						{ message: '只能是数字', trigger:'change', pattern:/^\d+$|^\d+[.]?\d+$/,}
 					],
 					
-					value: [
-						{ required: true, message: '请输入', trigger: 'blur', },
+					clientType: [
+						{ required: true, message: '请输入', trigger: 'change', },
 					],
 		
 				},

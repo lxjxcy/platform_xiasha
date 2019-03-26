@@ -4,12 +4,13 @@
 			v-model="addModal"
 			title="新增"
 			width="450"
+			:loading="loading"
 			@on-cancel="asyncCancel"
 			@on-ok="asyncOK"
 			:mask-closable="false">
 			<div>	
 				<Form ref="addfrom" :model="addfrom" :rules="ruleValidate" :label-width="80">
-					<FormItem label="园区">
+					<FormItem label="园区" prop="communityName">
 						<div v-model="addfrom.communityName" style="width:300px;height:33px;border: 1px solid #dbdee2;border-radius: 5px;padding-left:5px;">{{addfrom.communityName}}</div>
 					</FormItem>
 					<FormItem label="大楼名称" prop="buildingName">
@@ -37,7 +38,9 @@
 			return{
 				ruleValidate:{
 					
-					
+					communityName:[
+							{ required: true, message: '请输入', }
+					],
 					
 					buildingName: [
 						{ required: true, message: '请输入', trigger: 'blur' },

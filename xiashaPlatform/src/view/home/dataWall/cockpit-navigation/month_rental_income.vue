@@ -68,6 +68,8 @@
 		created(){
 			this.$store.state.showCommunity=true;
 			this.$store.state.showType=false;
+			document.title
+
 		},
 		
 	mixins:[commonData],
